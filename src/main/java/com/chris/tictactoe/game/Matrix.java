@@ -8,10 +8,13 @@ import com.chris.tictactoe.game.model.shapes.TicTacToeShape;
 public class Matrix {
 	enum MatrixDirection{VERTICAL, HORIZONTAL, DIAGONAL}
 	
+	private final static int MATRIX_DIMENSION = 3;
+	
 	private TicTacToeShape[][] arrayMatrix;
 	
+	
 	public Matrix(){
-		setArrayMatrix(new TicTacToeShape[3][3]);
+		setArrayMatrix(new TicTacToeShape[MATRIX_DIMENSION][MATRIX_DIMENSION]);
 	}
 	
 	public void writeElement(TicTacToeShape element) throws PositionOccupiedException{
@@ -41,8 +44,8 @@ public class Matrix {
 		int crossCounter = 0;
 		int circleCounter = 0;
 		
-		for(int i = 0; i < 3; i++){
-			for(int j = 0; j < 3; j++){
+		for(int i = 0; i < arrayMatrix.length; i++){
+			for(int j = 0; j < arrayMatrix[i].length; j++){
 				TicTacToeShape shape;
 				if(direction == MatrixDirection.VERTICAL){
 					shape = getArrayMatrix()[j][i];
@@ -52,7 +55,7 @@ public class Matrix {
 					if(i == 0){
 						shape = arrayMatrix[j][j];
 					} else {
-						shape = arrayMatrix[j][2 - j];
+						shape = arrayMatrix[j][(MATRIX_DIMENSION - 1) - j];
 					}
 				}
 				  
@@ -85,8 +88,8 @@ public class Matrix {
 	}
 	
 	public boolean isFull() {
-		for(int i = 0; i < 3; i++){
-			for(int j = 0 ; j < 3 ; j++){
+		for(int i = 0; i < arrayMatrix.length; i++){
+			for(int j = 0 ; j < arrayMatrix[i].length ; j++){
 				if(arrayMatrix[i][j] == null){
 					return false;
 				}
@@ -103,9 +106,5 @@ public class Matrix {
 	public void setArrayMatrix(TicTacToeShape[][] arrayMatrix) {
 		this.arrayMatrix = arrayMatrix;
 	}
-
-	
-
-	
 
 }
