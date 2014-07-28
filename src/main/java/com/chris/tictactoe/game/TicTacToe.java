@@ -26,15 +26,6 @@ public interface TicTacToe {
 	void registerPlayers(Player circlePlayer, Player crossPlayer) throws WrongShapeException;
 	
 	/**
-	 * Method that start the game.
-	 * This method should be called after 2 players are registered
-	 * with the method {@link #registerPlayers(Player, Player) registerPlayers} 
-	 * 
-	 * @throws NoPlayersRegisteredException
-	 */
-	void startGame() throws NoPlayersRegisteredException;
-	
-	/**
 	 * Place a 'X' in the matrix of the game.
 	 * 
 	 * @param coordinate
@@ -42,7 +33,7 @@ public interface TicTacToe {
 	 * @throws WaitYourTurnException
 	 * @throws GameOverException
 	 */
-	void playCross(GameCoordinates coordinate) throws PositionOccupiedException, WaitYourTurnException, GameOverException;
+	void playCross(GameCoordinates coordinate) throws PositionOccupiedException, WaitYourTurnException, GameOverException, NoPlayersRegisteredException;
 	
 	/**
 	 * Place a 'O' in the matrix of the game.
@@ -52,7 +43,7 @@ public interface TicTacToe {
 	 * @throws WaitYourTurnException
 	 * @throws GameOverException
 	 */
-	void playCircle(GameCoordinates coordinate) throws PositionOccupiedException, WaitYourTurnException, GameOverException;
+	void playCircle(GameCoordinates coordinate) throws PositionOccupiedException, WaitYourTurnException, GameOverException, NoPlayersRegisteredException;
 	
 	/**
 	 * Method that will return the winner player in case there is a winner.

@@ -18,5 +18,5 @@ public enum GameCoordinates {
 	public Coordinate getCoordinates(){
 		return new Coordinate(row, col);
 	}
-
+	
 }

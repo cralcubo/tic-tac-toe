@@ -11,8 +11,8 @@ This library can be accessed through the interface com.chris.tictactoe.game.TicT
 Check the documentation in this interface to understand what every method does.
 
 
-RULES OF THE GAME
-=================
+Rules of the game
+==================
 
 Each player must registered to the game.
 When a player wants to play, he has to specify a coordinate in the tic tac toe matrix:

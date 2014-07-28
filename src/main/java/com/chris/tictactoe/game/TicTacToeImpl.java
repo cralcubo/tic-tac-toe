@@ -31,17 +31,25 @@ public class TicTacToeImpl implements TicTacToe {
 		
 		circlePlayerManager = new PlayerManager(circlePlayer);
 		crossPlayerManager = new PlayerManager(crossPlayer);
+		
+		gameManager = new GameManager(circlePlayerManager, crossPlayerManager);
+		
 	}
 	
-	public void playCross(GameCoordinates coordinate) throws PositionOccupiedException, WaitYourTurnException, GameOverException{
+	public void playCross(GameCoordinates coordinate) throws PositionOccupiedException, WaitYourTurnException, GameOverException, NoPlayersRegisteredException{
 		play(PlayerShape.CROSS, coordinate);
 	}
 	
-	public void playCircle(GameCoordinates coordinate) throws PositionOccupiedException, WaitYourTurnException, GameOverException{
+	public void playCircle(GameCoordinates coordinate) throws PositionOccupiedException, WaitYourTurnException, GameOverException, NoPlayersRegisteredException{
 		play(PlayerShape.CIRCLE, coordinate);
 	}
 	
-	private void play(PlayerShape shape, GameCoordinates coordinate) throws PositionOccupiedException, WaitYourTurnException, GameOverException{
+	private void play(PlayerShape shape, GameCoordinates coordinate) throws PositionOccupiedException, WaitYourTurnException, GameOverException, NoPlayersRegisteredException{
+		
+		if(crossPlayerManager == null || circlePlayerManager == null){
+			throw new NoPlayersRegisteredException();
+		}
+		
 		PlayerManager playerManager;
 		if(shape == PlayerShape.CROSS){
 			playerManager = crossPlayerManager;
@@ -75,14 +83,6 @@ public class TicTacToeImpl implements TicTacToe {
 	
 	public boolean isTie(){
 		return gameManager.isTie();
-	}
-	
-	public void startGame() throws NoPlayersRegisteredException{
-		if(circlePlayerManager != null && crossPlayerManager != null){
-			gameManager = new GameManager(circlePlayerManager, crossPlayerManager);
-		} else {
-			throw new NoPlayersRegisteredException();
-		}
 	}
 
 }

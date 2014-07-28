@@ -27,12 +27,6 @@ public class TicTacToeImplTest {
 		Player circlePlayer = new Player(new Circle());
 		Player crossPlayer = new Player(new Cross());
 		game.registerPlayers(circlePlayer, crossPlayer);
-		game.startGame();
-	}
-	
-	@Test(expected = NoPlayersRegisteredException.class)
-	public void testStartGame_noPlayers() throws NoPlayersRegisteredException{
-		game.startGame();
 	}
 	
 	@Test
@@ -45,7 +39,6 @@ public class TicTacToeImplTest {
 		Player circlePlayer = new Player(new Cross());
 		Player crossPlayer = new Player(new Cross());
 		game.registerPlayers(circlePlayer, crossPlayer);
-		game.startGame();
 	}
 	
 	@Test
