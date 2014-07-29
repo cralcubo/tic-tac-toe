@@ -1,11 +1,14 @@
 package com.chris.tictactoe.game;
 
+import java.util.Map;
+
 import com.chris.tictactoe.game.exceptions.GameOverException;
 import com.chris.tictactoe.game.exceptions.NoPlayersRegisteredException;
 import com.chris.tictactoe.game.exceptions.PositionOccupiedException;
 import com.chris.tictactoe.game.exceptions.WaitYourTurnException;
 import com.chris.tictactoe.game.exceptions.WrongShapeException;
 import com.chris.tictactoe.game.model.Player;
+import com.chris.tictactoe.game.model.shapes.TicTacToeShape;
 /**
  * Interface that has all the actions
  * to play the Tic Tac Toe game.
@@ -57,6 +60,14 @@ public interface TicTacToe {
 	 * @return
 	 */
 	boolean isTie();
+	
+	/**
+	 * Method that will return the shapes that occupy
+	 * the cells of the matrix of the game.
+	 * 
+	 * @return
+	 */
+	Map<GameCoordinates, TicTacToeShape> getGameMatrix();
 	
 	
 

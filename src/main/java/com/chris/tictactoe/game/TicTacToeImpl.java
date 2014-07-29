@@ -1,5 +1,8 @@
 package com.chris.tictactoe.game;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.chris.tictactoe.game.exceptions.GameOverException;
 import com.chris.tictactoe.game.exceptions.NoPlayersRegisteredException;
 import com.chris.tictactoe.game.exceptions.PositionOccupiedException;
@@ -8,6 +11,7 @@ import com.chris.tictactoe.game.exceptions.WrongShapeException;
 import com.chris.tictactoe.game.model.Player;
 import com.chris.tictactoe.game.model.shapes.Circle;
 import com.chris.tictactoe.game.model.shapes.Cross;
+import com.chris.tictactoe.game.model.shapes.TicTacToeShape;
 
 public class TicTacToeImpl implements TicTacToe {
 	private enum PlayerShape{CIRCLE, CROSS}
@@ -79,6 +83,22 @@ public class TicTacToeImpl implements TicTacToe {
 		}
 		
 		return null;
+	}
+	
+	public Map<GameCoordinates, TicTacToeShape> getGameMatrix(){
+		TicTacToeShape[][] matrix = gameManager.getGameMatrix();
+		Map<GameCoordinates, TicTacToeShape> gameMatrix = new HashMap<>();
+		
+		for(int i = 0; i < matrix.length; i++){
+			for(int j=0; j < matrix[i].length ; j++){
+				TicTacToeShape shape = matrix[i][j];
+				GameCoordinates gameCoordinates = GameCoordinates.getGameCoordinates(i, j);
+				
+				gameMatrix.put(gameCoordinates, shape);
+			}
+		}
+		
+		return gameMatrix;
 	}
 	
 	public boolean isTie(){

@@ -19,4 +19,13 @@ public enum GameCoordinates {
 		return new Coordinate(row, col);
 	}
 	
+	public static GameCoordinates getGameCoordinates(int row, int col){
+		for(GameCoordinates gameCoordinates : values()){
+			if(gameCoordinates.row == row && gameCoordinates.col == col){
+				return gameCoordinates;
+			}
+		}
+		
+		return null;
+	}
 }

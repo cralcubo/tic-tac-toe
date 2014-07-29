@@ -6,7 +6,7 @@ import com.chris.tictactoe.game.model.shapes.Cross;
 import com.chris.tictactoe.game.model.shapes.TicTacToeShape;
 
 public class Matrix {
-	enum MatrixDirection{VERTICAL, HORIZONTAL, DIAGONAL}
+	private enum MatrixDirection{VERTICAL, HORIZONTAL, DIAGONAL}
 	
 	private final static int MATRIX_DIMENSION = 3;
 	

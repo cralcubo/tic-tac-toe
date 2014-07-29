@@ -2,6 +2,8 @@ package com.chris.tictactoe.game;
 
 import static org.junit.Assert.*;
 
+import java.util.Map;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,6 +15,7 @@ import com.chris.tictactoe.game.exceptions.WrongShapeException;
 import com.chris.tictactoe.game.model.Player;
 import com.chris.tictactoe.game.model.shapes.Circle;
 import com.chris.tictactoe.game.model.shapes.Cross;
+import com.chris.tictactoe.game.model.shapes.TicTacToeShape;
 
 public class TicTacToeImplTest {
 	
@@ -138,6 +141,19 @@ public class TicTacToeImplTest {
 		tieGame();
 		
 		game.playCross(GameCoordinates.A1);
+	}
+	
+	@Test
+	public void testGameMatrix() throws NoPlayersRegisteredException, WrongShapeException, PositionOccupiedException, WaitYourTurnException, GameOverException{
+		tieGame();
+		
+		Map<GameCoordinates, TicTacToeShape> matrix = game.getGameMatrix();
+		
+		assertTrue(matrix.get(GameCoordinates.A1) instanceof Circle);
+		assertTrue(matrix.get(GameCoordinates.A3) instanceof Circle);
+		assertTrue(matrix.get(GameCoordinates.A2) instanceof Cross);
+		assertTrue(matrix.get(GameCoordinates.C1) instanceof Circle);
+		
 	}
 	
 	private void tieGame() throws NoPlayersRegisteredException, WrongShapeException, PositionOccupiedException, WaitYourTurnException, GameOverException{

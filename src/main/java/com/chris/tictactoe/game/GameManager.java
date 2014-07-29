@@ -58,6 +58,10 @@ public class GameManager {
 		return null;
 	}
 	
+	public TicTacToeShape[][] getGameMatrix(){
+		return matrix.getArrayMatrix();
+	}
+	
 	private PlayerManager verifyWinnerShape(TicTacToeShape winnerShape){
 		if(winnerShape != null){
 			if(winnerShape instanceof Circle){
